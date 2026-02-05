@@ -21,7 +21,7 @@ jobs:
       with:
         context: .
         push: true
-        tags: kirzhan:${{ github.ref_name }}
+        tags: ${{ secrets.DOCKER_USERNAME }}/app-argocdtask:${{ github.ref_name }}
 
     - name: deploy to cluster
       run: |
