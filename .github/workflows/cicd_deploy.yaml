@@ -21,7 +21,7 @@ jobs:
       with:
         context: .
         push: true
-        tags: ${{ github.repository }}:${{ github.ref_name }}
+        tags: kirzhan:${{ github.ref_name }}
 
     - name: deploy to cluster
       run: |
