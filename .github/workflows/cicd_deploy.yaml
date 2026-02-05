@@ -24,8 +24,10 @@ jobs:
         tags: ${{ secrets.DOCKER_USERNAME }}/app-argocdtask:${{ github.ref_name }}
 
     - name: deploy to cluster
+      env:
+        API_TOKEN_GITHUB: ${{ secrets.MY_GITHUB_TOKEN }}
       run: |
-        git clone https://github.com/kirylzhan-stack/helm-argocdtask
+        git clone https://x-access-token:${{ env.API_TOKEN_GITHUB }}@github.com/kirylzhan-stack/helm-argocdtask.git
         cd helm-argocdtask
         sed -i "s/image: .*/image: ${{ github.ref_name }}/" values.yaml
         git config user.name "GitHub Action"
