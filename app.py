@@ -25,14 +25,17 @@ def background_task():
 
 @app.route('/')
 def hello():
-    image_name = os.getenv('IMAGE_NAME', 'Unknown (variable not set)')
+    image_name = os.getenv('IMAGE_NAME', 'Unknown')
+    secret = os.getenv('SECRET', 'Not Set')
+    
     return f"""
     <html>
         <body style="background-color: #444; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; font-family: sans-serif;">
-            <h1 style="font-size: 40px; color: white; text-align: center;">
-                Resource Monitor App<br>
-                <span style="color: #00ff00; font-size: 20px;">Image: {image_name}</span>
-            </h1>
+            <div style="text-align: center; color: white;">
+                <h1 style="font-size: 40px;">Web-application for k8s megatask!</h1>
+                <p style="font-size: 24px; color: #FF0000;">Secret: {secret}</p>
+                <p style="font-size: 18px; color: #00ff00;">Image: {image_name}</p>
+            </div>
         </body>
     </html>
     """
